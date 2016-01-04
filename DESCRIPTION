@@ -1,30 +1,40 @@
 Package: USAboundaries
 Type: Package
-Title: Historical Boundaries of the United States of America, 1629-2000
-Date: 2014
-Version: 0.1.1
-Authors@R: c(person("Lincoln", "Mullen", email = "lincoln@lincolnmullen.com",
-    role = c("aut", "cre")), person("Dr. William M. Scholl Center for American
-    History and Culture, The Newberry Library", role = c("cph")))
-Description: This package provides spatial objects with the boundaries of
-    states or counties in the United States of America from 1629 to 2000.
-    It provides data from the Atlas of Historical County Boundaries.
+Title: Historical and Contemporary Boundaries of the United States of
+        America
+Version: 0.2.0
+Date: 2016-01-03
+Authors@R: c(person("Lincoln", "Mullen",
+    email = "lincoln@lincolnmullen.com",
+    role = c("aut", "cre")),
+    person("Dr. William M. Scholl Center for American History and Culture,
+    The Newberry Library", role = "cph"),
+    person("United States Census Bureau", role = "cph"))
+Description: The boundaries for geographical units in the United States of
+    America contained in this package include state, county, congressional
+    district, and zip code tabulation area. Contemporary boundaries are provided
+    by the U.S. Census Bureau (public domain). Historical boundaries for the
+    years from 1629 to 2000 are provided form the Newberry Library's 'Atlas of
+    Historical County Boundaries' (licensed CC BY-NC-SA). Additional high
+    resolution data is provided in the 'USAboundariesData' package;
+    this package provides an interface to access that data.
 License: CC BY-NC-SA 4.0
-LazyData: true
-LazyDataCompression: xz
 URL: https://github.com/ropensci/USAboundaries
 BugReports: https://github.com/ropensci/USAboundaries/issues
-Depends: R (>= 3.1.1),
-Imports: assertthat (>= 0.1), dplyr (>= 0.3.0.1), ggplot2 (>= 1.0.0),
-        lubridate (>= 1.3.3), maptools (>= 0.8-30), rgeos (>= 0.3-8),
-        sp (>= 1.0.15)
-Suggests: knitr, mapproj, testthat (>= 0.9.1)
+Depends: R (>= 3.1.1)
+Imports: sp (>= 1.0.15)
+Suggests: USAboundariesData (>= 0.2.0), knitr, testthat (>= 0.9.1)
 VignetteBuilder: knitr
-Packaged: 2014-12-24 00:56:39 UTC; lmullen
+RoxygenNote: 5.0.1
+Additional_repositories: http://packages.ropensci.org
+LazyData: true
+LazyDataCompression: xz
+NeedsCompilation: no
+Packaged: 2016-01-04 01:23:17 UTC; lmullen
 Author: Lincoln Mullen [aut, cre],
   Dr. William M. Scholl Center for American History and Culture, The
-    Newberry Library [cph]
+    Newberry Library [cph],
+  United States Census Bureau [cph]
 Maintainer: Lincoln Mullen <lincoln@lincolnmullen.com>
-NeedsCompilation: no
 Repository: CRAN
-Date/Publication: 2014-12-24 06:08:08
+Date/Publication: 2016-01-04 11:05:17

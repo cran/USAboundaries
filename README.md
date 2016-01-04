@@ -1,45 +1,127 @@
-## USAboundaries: Historical boundaries of the United States, 1629-2000
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+USAboundaries: Historical and Contemporary Boundaries of the United States of America
+-------------------------------------------------------------------------------------
 
-[![Build Status](https://travis-ci.org/ropensci/USAboundaries.png?branch=master)](https://travis-ci.org/ropensci/USAboundaries)
-[![Build status](https://ci.appveyor.com/api/projects/status/p50pym9vtnky597e?svg=true)](https://ci.appveyor.com/project/lmullen/USAboundaries)
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/USAboundaries)](http://cran.r-project.org/package=USAboundaries) [![Build Status](https://travis-ci.org/ropensci/USAboundaries.png?branch=master)](https://travis-ci.org/ropensci/USAboundaries) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/ropensci/USAboundaries?branch=master)](https://ci.appveyor.com/project/ropensci/USAboundaries)
 
-
-This R package lets you map the United States of America (or the colonies that
-became the United States) on any date from 1629 to 2000. It contains 
-both county and state/territory level polygons.
+This R package includes contemporary state, county, and congressional district boundaries for the United States of America, as well as historical boundaries from 1629 to 2000 for states and counties from the Newberry Library's [Atlas of Historical County Boundaries](http://publications.newberry.org/ahcbp/).
 
 ### Installation
 
-First, install [devtools][]. Then install this package from GitHub.
+You can install this package from CRAN.
+
+    install.packages("USAboundaries")
+
+Or you can install the development version from GitHub using [devtools](https://github.com/hadley/devtools). You may also wish to install the high resolution data package.
 
     devtools::install_github("ropensci/USAboundaries")
+    devtools::install_github("ropensci/USAboundariesData")
 
 ### Use
 
-The `us_boundaries()` function takes a date object and returns a spatial
-object. That spatial object can then be plotted using the [sp][]
-package.
+This package provides a set of functions, one for each of the types of boundaries that are available. These functions have a consistent interface.
 
-    library(USAboundaries)
-    map <- us_boundaries(as.Date("1840-03-12"))
+Passing a date to `us_states()` or `us_counties()` returns the boundaries for that date. If no date argument is passed, then contemporary boundaries are returned. The functions `us_congressional()` and `us_zipcodes()` only offer contemporary boundaries.
 
-    if(require(sp)) {
-      plot(map)
-    }
+For any function, pass a character vector of state names to the `states =` argument to return only those states or territories.
+
+For certain functions, more or less detailed boundary information is available by passing an argument to the `resolution =` argument.
+
+See the examples below to see how the interface works, and see the documentation for each function for more details.
+
+``` r
+library(USAboundaries) 
+library(sp) # for the plot.SpatialPolygonsDataFrame method
+
+states_1840 <- us_states("1840-03-12")
+plot(states_1840)
+title("U.S. state boundaries on March 3, 1840")
+```
+
+![](README-unnamed-chunk-2-1.png)
+
+``` r
+
+states_contemporary <- us_states()
+plot(states_contemporary)
+title("Contemporary U.S. state boundaries")
+```
+
+![](README-unnamed-chunk-2-2.png)
+
+``` r
+
+counties_va_1787 <- us_counties("1787-09-17", states = "Virginia")
+plot(counties_va_1787)
+title("County boundaries in Virginia in 1787")
+```
+
+![](README-unnamed-chunk-2-3.png)
+
+``` r
+
+counties_va <- us_counties(states = "Virginia")
+plot(counties_va)
+title("Contemporary county boundaries in Virginia")
+```
+
+![](README-unnamed-chunk-2-4.png)
+
+``` r
+
+counties_va_highres <- us_counties(states = "Virginia", resolution = "high")
+plot(counties_va_highres)
+title("Higher resolution contemporary county boundaries in Virginia")
+```
+
+![](README-unnamed-chunk-2-5.png)
+
+``` r
+
+congress <- us_congressional(states = "California")
+plot(congress)
+title("Congressional district boundaries in California")
+```
+
+![](README-unnamed-chunk-2-6.png)
+
+### Related packages
+
+Each function returns a `SpatialPolygonsDataFrame` which is suitable for use with the [sp](http://cran.r-project.org/package=sp) or [leaflet](http://cran.r-project.org/package=leaflet) packages, and which can be fortified by the [broom](http://cran.r-project.org/package=broom) package for use with [ggplot2](http://cran.r-project.org/package=ggplot2). See the [geojsonio](http://cran.r-project.org/package=geojsonio) package for functions to convert these boundaries to GeoJSON.
+
+If you need U.S. Census Bureau boundary files which are not provided by this package, consider using the [tigris](http://cran.r-project.org/package=tigris) package, which downloads those shapefiles.
 
 ### Citation and license
 
-The historical data provided in this package is available under the CC
-BY-NC-SA 2.5 license from John H. Long, et al., [Atlas of Historical
-County Boundaries][], Dr. William M. Scholl Center for American History
-and Culture, The Newberry Library, Chicago (2010). Please cite that
-project if you use this package in your research, but I would also
-appreciate a citation to the R package itself.
+The historical data provided in this package is available under the CC BY-NC-SA 2.5 license from John H. Long, et al., [Atlas of Historical County Boundaries](http://publications.newberry.org/ahcbp/), Dr. William M. Scholl Center for American History and Culture, The Newberry Library, Chicago (2010). Please cite that project if you use this package in your research and abide by the terms of their license if you use the historical information.
 
-  [devtools]: https://github.com/hadley/devtools
-  [sp]: http://cran.r-project.org/web/packages/sp/index.html
-  [Atlas of Historical County Boundaries]: http://publications.newberry.org/ahcbp/
+The contemporary data is provided by the [U.S. Census Bureau](https://www.census.gov/geo/maps-data/).
 
----
+All code in this package is copyright [Lincoln Mullen](http://lincolnmullen.com) and is released under the MIT license.
+
+If you use this package in your research, I would appreciate a citation.
+
+``` r
+citation("USAboundaries")
+#> 
+#> To cite package 'USAboundaries' in publications use:
+#> 
+#>   Lincoln Mullen (2015). USAboundaries: Historical and
+#>   Contemporary Boundaries of the United States of America. R
+#>   package version 0.1.1.9001.
+#>   https://github.com/ropensci/USAboundaries
+#> 
+#> A BibTeX entry for LaTeX users is
+#> 
+#>   @Manual{,
+#>     title = {USAboundaries: Historical and Contemporary Boundaries of the United States of America},
+#>     author = {Lincoln Mullen},
+#>     year = {2015},
+#>     note = {R package version 0.1.1.9001},
+#>     url = {https://github.com/ropensci/USAboundaries},
+#>   }
+```
+
+------------------------------------------------------------------------
+
 [![rOpenSci footer](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)
-
