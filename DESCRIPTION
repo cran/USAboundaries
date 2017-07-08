@@ -2,39 +2,38 @@ Package: USAboundaries
 Type: Package
 Title: Historical and Contemporary Boundaries of the United States of
         America
-Version: 0.2.0
-Date: 2016-01-03
+Version: 0.3.0
+Date: 2017-07-05
 Authors@R: c(person("Lincoln", "Mullen",
     email = "lincoln@lincolnmullen.com",
     role = c("aut", "cre")),
-    person("Dr. William M. Scholl Center for American History and Culture,
-    The Newberry Library", role = "cph"),
+    person("Jordan", "Bratt",
+    email = "jfbratt@gmail.com",
+    role = c("aut")),
     person("United States Census Bureau", role = "cph"))
 Description: The boundaries for geographical units in the United States of
     America contained in this package include state, county, congressional
     district, and zip code tabulation area. Contemporary boundaries are provided
     by the U.S. Census Bureau (public domain). Historical boundaries for the
     years from 1629 to 2000 are provided form the Newberry Library's 'Atlas of
-    Historical County Boundaries' (licensed CC BY-NC-SA). Additional high
-    resolution data is provided in the 'USAboundariesData' package;
-    this package provides an interface to access that data.
-License: CC BY-NC-SA 4.0
+    Historical County Boundaries' (licensed CC BY-NC-SA). Additional  data is
+    provided in the 'USAboundariesData' package; this package provides an
+    interface to access that data.
+License: MIT + file LICENSE
 URL: https://github.com/ropensci/USAboundaries
 BugReports: https://github.com/ropensci/USAboundaries/issues
 Depends: R (>= 3.1.1)
-Imports: sp (>= 1.0.15)
-Suggests: USAboundariesData (>= 0.2.0), knitr, testthat (>= 0.9.1)
-VignetteBuilder: knitr
-RoxygenNote: 5.0.1
+Suggests: sf (>= 0.5.1), testthat (>= 0.9.1), USAboundariesData (>=
+        0.3.0), covr
+RoxygenNote: 6.0.1
 Additional_repositories: http://packages.ropensci.org
 LazyData: true
 LazyDataCompression: xz
 NeedsCompilation: no
-Packaged: 2016-01-04 01:23:17 UTC; lmullen
+Packaged: 2017-07-07 16:56:17 UTC; lmullen
 Author: Lincoln Mullen [aut, cre],
-  Dr. William M. Scholl Center for American History and Culture, The
-    Newberry Library [cph],
+  Jordan Bratt [aut],
   United States Census Bureau [cph]
 Maintainer: Lincoln Mullen <lincoln@lincolnmullen.com>
 Repository: CRAN
-Date/Publication: 2016-01-04 11:05:17
+Date/Publication: 2017-07-08 04:09:51 UTC

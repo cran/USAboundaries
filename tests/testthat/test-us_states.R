@@ -1,7 +1,7 @@
 context("US States")
 
 test_that("No date returns current states", {
-  expect_identical(us_states(), USAboundaries::cb_2014_us_state_20m)
+  expect_identical(us_states(), USAboundaries::states_contemporary_lores)
 })
 
 test_that("Dates outside the valid range have an error message", {
@@ -10,7 +10,7 @@ test_that("Dates outside the valid range have an error message", {
 })
 
 test_that("Current states can be filtered", {
-  expect_equal(length(us_states(states = c("Virginia", "Maryland"))), 2)
+  expect_equal(nrow(us_states(states = c("Virginia", "Maryland"))), 2)
 })
 
 test_that("Error message if no matches are found", {
@@ -18,7 +18,7 @@ test_that("Error message if no matches are found", {
 })
 
 test_that("Historical states can be filtered", {
-  expect_equal(length(us_states("1875-01-02",
+  expect_equal(nrow(us_states("1875-01-02",
                                 states = c("Virginia", "Maryland"))),
                2)
 })
@@ -26,7 +26,7 @@ test_that("Historical states can be filtered", {
 test_that("Correct resolution shapefiles are returned", {
   skip_if_not_installed("USAboundariesData")
   expect_identical(us_states(resolution = "low"),
-                   USAboundaries::cb_2014_us_state_20m)
+                   USAboundaries::states_contemporary_lores)
   expect_identical(us_states(resolution = "high"),
-                   USAboundariesData::cb_2014_us_state_500k)
+                   USAboundariesData::states_contemporary_hires)
 })

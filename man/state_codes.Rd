@@ -4,7 +4,7 @@
 \name{state_codes}
 \alias{state_codes}
 \title{State codes and abbreviations for U.S. states and territories}
-\format{A data frame with 68 rows and 4 variables:
+\format{A data.frame with 69 rows and 4 variables:
 \describe{
 \item{state_name}{The state or territory name}
 \item{state_abbr}{The two character abbreviation for the state or territory.}
@@ -27,4 +27,3 @@ U.S. Census Bureau,
    2015).
 }
 \keyword{datasets}
-
