@@ -3,13 +3,10 @@
 
 # USAboundaries
 
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/USAboundaries)](http://cran.r-project.org/package=USAboundaries)
+[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/USAboundaries)](https://cran.r-project.org/package=USAboundaries)
 [![JOSS
-Status](http://joss.theoj.org/papers/3458a33133aa6c069ab4dd8df0b5f3b5/status.svg)](http://joss.theoj.org/papers/3458a33133aa6c069ab4dd8df0b5f3b5)
-[![Travis
-Status](https://travis-ci.org/ropensci/USAboundaries.png?branch=master)](https://travis-ci.org/ropensci/USAboundaries)
-[![AppVeyor Build
-Status](https://ci.appveyor.com/api/projects/status/github/ropensci/USAboundaries?branch=master)](https://ci.appveyor.com/project/ropensci/USAboundaries)
+Status](https://joss.theoj.org/papers/3458a33133aa6c069ab4dd8df0b5f3b5/status.svg)](https://doi.org/10.21105/joss.00314)
+[![R-CMD-check](https://github.com/ropensci/USAboundaries/workflows/R-CMD-check/badge.svg)](https://github.com/ropensci/USAboundaries/actions)
 [![Coverage
 Status](https://img.shields.io/codecov/c/github/ropensci/USAboundaries/master.svg)](https://codecov.io/github/ropensci/USAboundaries?branch=master)
 
@@ -19,10 +16,10 @@ This R package includes contemporary state, county, and Congressional
 district boundaries, as well as zip code tabulation area centroids. It
 also includes historical boundaries from 1629 to 2000 for states and
 counties from the Newberry Library’s [Atlas of Historical County
-Boundaries](http://publications.newberry.org/ahcbp/), as well as
+Boundaries](https://publications.newberry.org/ahcbp/), as well as
 historical city population data from Erik Steiner’s “[United States
-Historical City
-Populations, 1790-2010](https://github.com/cestastanford/historical-us-city-populations).”
+Historical City Populations,
+1790-2010](https://github.com/cestastanford/historical-us-city-populations).”
 The package has some helper data, including a table of state names,
 abbreviations, and FIPS codes, and functions and data to get [State
 Plane Coordinate
@@ -49,9 +46,9 @@ citation("USAboundaries")
 #> To cite the USAboundaries package in publications, please cite the
 #> paper in the Journal of Open Source Software:
 #> 
-#>   Lincoln A. Mullen and Jordan Bratt, "USAboundaries: Historical
-#>   and Contemporary Boundaries of the United States of America,"
-#>   Journal of Open Source Software 3, no. 23 (2018): 314,
+#>   Lincoln A. Mullen and Jordan Bratt, "USAboundaries: Historical and
+#>   Contemporary Boundaries of the United States of America," Journal of
+#>   Open Source Software 3, no. 23 (2018): 314,
 #>   https://doi.org/10.21105/joss.00314.
 #> 
 #> A BibTeX entry for LaTeX users is
@@ -80,14 +77,15 @@ Almost all of the data for this package is provided by the
 [USAboundariesData
 package](https://github.com/ropensci/USAboundariesData). That package
 will be automatically installed (with your permission) from the
-[rOpenSci package repository](http://packages.ropensci.org/) the first
+[rOpenSci package repository](https://ropensci.r-universe.dev) the first
 time that you need it.
 
 Or you can install the development versions from GitHub using
-[devtools](https://github.com/hadley/devtools).
+[remotes](https://remotes.r-lib.org).
 
-    devtools::install_github("ropensci/USAboundaries")
-    devtools::install_github("ropensci/USAboundariesData")
+    # install.packages("remotes")
+    remotes::install_github("ropensci/USAboundaries")
+    remotes::install_github("ropensci/USAboundariesData")
 
 ## Use
 
@@ -114,59 +112,54 @@ documentation for each function for more details.
 ``` r
 library(USAboundaries) 
 library(sf) # for plotting and projection methods
-#> Linking to GEOS 3.6.2, GDAL 2.2.3, proj.4 5.0.0
+#> Linking to GEOS 3.9.1, GDAL 3.3.2, PROJ 8.1.1
 
 states_1840 <- us_states("1840-03-12")
 plot(st_geometry(states_1840))
 title("U.S. state boundaries on March 3, 1840")
 ```
 
-![](tools/README-unnamed-chunk-3-1.png)<!-- -->
+![](man/figures/README-unnamed-chunk-3-1.png)<!-- -->
 
 ``` r
-
 states_contemporary <- us_states()
 plot(st_geometry(states_contemporary))
 title("Contemporary U.S. state boundaries")
 ```
 
-![](tools/README-unnamed-chunk-3-2.png)<!-- -->
+![](man/figures/README-unnamed-chunk-3-2.png)<!-- -->
 
 ``` r
-
 counties_va_1787 <- us_counties("1787-09-17", states = "Virginia")
 plot(st_geometry(counties_va_1787))
 title("County boundaries in Virginia in 1787")
 ```
 
-![](tools/README-unnamed-chunk-3-3.png)<!-- -->
+![](man/figures/README-unnamed-chunk-3-3.png)<!-- -->
 
 ``` r
-
 counties_va <- us_counties(states = "Virginia")
 plot(st_geometry(counties_va))
 title("Contemporary county boundaries in Virginia")
 ```
 
-![](tools/README-unnamed-chunk-3-4.png)<!-- -->
+![](man/figures/README-unnamed-chunk-3-4.png)<!-- -->
 
 ``` r
-
 counties_va_highres <- us_counties(states = "Virginia", resolution = "high")
 plot(st_geometry(counties_va_highres))
 title("Higher resolution contemporary county boundaries in Virginia")
 ```
 
-![](tools/README-unnamed-chunk-3-5.png)<!-- -->
+![](man/figures/README-unnamed-chunk-3-5.png)<!-- -->
 
 ``` r
-
 congress <- us_congressional(states = "California")
 plot(st_geometry(congress))
 title("Congressional district boundaries in California")
 ```
 
-![](tools/README-unnamed-chunk-3-6.png)<!-- -->
+![](man/figures/README-unnamed-chunk-3-6.png)<!-- -->
 
 ## State plane projections
 
@@ -179,34 +172,33 @@ va <- us_states(states = "VA", resolution = "high")
 plot(st_geometry(va), graticule = TRUE)
 ```
 
-![](tools/README-unnamed-chunk-4-1.png)<!-- -->
+![](man/figures/README-unnamed-chunk-4-1.png)<!-- -->
 
 ``` r
-
 va_projection <- state_plane("VA")
 va <- st_transform(va, va_projection)
 plot(st_geometry(va), graticule = TRUE)
 ```
 
-![](tools/README-unnamed-chunk-4-2.png)<!-- -->
+![](man/figures/README-unnamed-chunk-4-2.png)<!-- -->
 
 ## Related packages
 
 Each function returns an `sf` object from the
-[sf](http://cran.r-project.org/package=sf) package, which can be mapped
-using the [leaflet](http://cran.r-project.org/package=leaflet) or
-[ggplot2](http://cran.r-project.org/package=ggplot2) packages.
+[sf](https://cran.r-project.org/package=sf) package, which can be mapped
+using the [leaflet](https://cran.r-project.org/package=leaflet) or
+[ggplot2](https://cran.r-project.org/package=ggplot2) packages.
 
 If you need U.S. Census Bureau boundary files which are not provided by
 this package, consider using the
-[tigris](http://cran.r-project.org/package=tigris) package, which
+[tigris](https://cran.r-project.org/package=tigris) package, which
 downloads those shapefiles.
 
 ## License
 
 The historical boundary data provided in this package is available under
 the CC BY-NC-SA 2.5 license from John H. Long, et al., [Atlas of
-Historical County Boundaries](http://publications.newberry.org/ahcbp/),
+Historical County Boundaries](https://publications.newberry.org/ahcbp/),
 Dr. William M. Scholl Center for American History and Culture, The
 Newberry Library, Chicago (2010). Please cite that project if you use
 this package in your research and abide by the terms of their license if
@@ -217,14 +209,13 @@ Bureau and Erik Steiner, Spatial History Project, Center for Spatial and
 Textual Analysis, Stanford University. See the data in [this
 repository](https://github.com/cestastanford/historical-us-city-populations).
 
-The contemporary data is provided by the [U.S. Census
-Bureau](https://www.census.gov/geo/maps-data/) and is in the publication
-domain.
+The contemporary data is provided by the U.S. Census Bureau and is in
+the public domain.
 
 All code in this package is copyright [Lincoln
 Mullen](http://lincolnmullen.com) and is released under the MIT license.
 
------
+------------------------------------------------------------------------
 
 [![rOpenSci
-footer](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)
+footer](https://ropensci.org//public_images/github_footer.png)](https://ropensci.org/)
