@@ -19,13 +19,16 @@ would return city populations from the 1800 census.}
 abbreviations. Only boundaries for those states/territories will be
 returned. If \code{NULL}, all boundaries will be returned.}
 }
+\value{
+An \code{sf} object.
+}
 \description{
 This function returns an \code{sf} object of cities (or populated places)
 with their populations and latitudes and longitudes. Population data is taken
 from the U.S. Census.
 }
 \examples{
-if (require(USAboundariesData)) {
+if (require(USAboundariesData, quietly = TRUE)) {
   us_cities(1805)
   us_cities("1828-05-08")
   us_cities()
@@ -35,6 +38,7 @@ if (require(USAboundariesData)) {
 \references{
 The data was compiled by Erik Steiner and Jason Heppler at the
   Center for Spatial and Textual Analysis, Stanford University. See their
-  \href{https://github.com/cestastanford/historical-us-city-populations}{description
-   of the data} for a fuller accounting of how the data was gathered.
+  \href{https://github.com/cestastanford/historical-us-city-populations}{the
+  description of the data} for a fuller accounting of how the data was
+  gathered.
 }
